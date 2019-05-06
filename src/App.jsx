@@ -2,50 +2,74 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Signup from "./SignUp.jsx";
 import Login from "./LogIn.jsx";
+import Item from "./Item.jsx";
+import ItemDetails from "./ItemDetails.jsx";
 import { Route, BrowserRouter, Link } from "react-router-dom";
 
-let renderHomepage = () => {
-  return (
-    <div>
-      <h3>Welcome</h3>
-      <Link to="/signup">Sign up</Link>
-      <Link to="/login">Log in</Link>
-      <p>Items will go here</p>
-    </div>
-  );
-};
-
-let fetchItems = () => {
-  fetch("http://localhost:4000/allItems", {
-    method: "GET"
-  })
-    .then(response => {
-      return response.text();
-    })
-    .then(ReponseBody => {
-      let body = JSON.parse(ResponseBody);
-      let itemsArray = body.map(item => {
-        return <Item path={item.image} />;
-      });
-    });
-};
-
-let renderSignup = () => {
-  return <Signup />;
-};
-
-let renderLogin = () => {
-  return <Login />;
-};
-
 class UnconnectedApp extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      itemsArray: []
+    };
+  }
+  componentDidMount = () => {
+    this.fetchItems();
+  };
+  fetchItems = () => {
+    fetch("http://localhost:4000/allItems", {
+      method: "GET"
+    })
+      .then(response => {
+        return response.text();
+      })
+      .then(ResponseBody => {
+        let body = JSON.parse(ResponseBody);
+        this.setState({ itemsArray: body });
+      });
+  };
+
+  renderHomepage = () => {
+    let displayItems = this.state.itemsArray.map(item => {
+      return <Item path={item.image} itemId={item.id} />;
+    });
+    return (
+      <div>
+        <h3>Welcome</h3>
+        <Link to="/signup">Sign up</Link>
+        <Link to="/login">Log in</Link>
+        {displayItems}
+      </div>
+    );
+  };
+  renderSignup = () => {
+    return <Signup />;
+  };
+
+  renderLogin = () => {
+    return <Login />;
+  };
+
+  renderItemDetails = routerData => {
+    let itemsArray = this.state.itemsArray;
+    let itemId = routerData.match.params.id;
+    let candidates = itemsArray.filter(item => {
+      return item.id === itemId;
+    });
+    return <ItemDetails item={candidates[0]} />;
+  };
   render = () => {
     return (
       <BrowserRouter>
         <div>
-          <Route exact={true} path="/" render={renderHomepage} />
-          <Route exact={true} path="/signup" render={renderSignup} />
-          <Route exact={true} path="/login" render={renderLogin} />
+          <Route exact={true} path="/" render={this.renderHomepage} />
+          <Route exact={true} path="/signup" render={this.renderSignup} />
+          <Route exact={true} path="/login" render={this.renderLogin} />
+          <Route
+            exact={true}
+            path="/item/:id"
+            render={this.renderItemDetails}
+          />
         </div>
       </BrowserRouter>
     );
