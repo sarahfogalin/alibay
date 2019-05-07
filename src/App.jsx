@@ -29,12 +29,13 @@ class UnconnectedApp extends Component {
       })
       .then(ResponseBody => {
         let body = JSON.parse(ResponseBody);
-        this.setState({ itemsArray: body });
+        this.setState({ itemsArray: body.items });
         console.log("fetched all items", body);
       });
   };
 
   renderHomepage = () => {
+    console.log(this.state.itemsArray);
     let displayItems = this.state.itemsArray.map(item => {
       return <Item path={item.image} itemId={item.id} />;
     });
@@ -90,6 +91,7 @@ class UnconnectedApp extends Component {
     return <ItemDetails item={candidates[0]} />;
   };
   render = () => {
+    console.log("state", this.state);
     return (
       <BrowserRouter>
         <div>
