@@ -84,11 +84,12 @@ class AddItem extends Component {
           <input type="number" onChange={this.handleItemPrice} />
           Image:
           <input type="file" onChange={this.handleItemImage} />
-          <DropdownButton id="dropdown-button" title="Categories">
-            <Dropdown.Item as="text">Clothing</Dropdown.Item>
-            <Dropdown.Item as="text">Footwear</Dropdown.Item>
-            <Dropdown.Item as="text">Accessories</Dropdown.Item>
-          </DropdownButton>
+          <input
+            type="text"
+            onClick={this.handleItemCategory}
+            value="Category"
+            selectBoxOptions="Clothing;Footwear;Accessories"
+          />
           How Many:
           <input type="text" onChange={this.handleItemStock} />
           ID:
