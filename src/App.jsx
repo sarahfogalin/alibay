@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import Signup from "./SignUp.jsx";
 import Login from "./LogIn.jsx";
 import Item from "./Item.jsx";
+import Search from "./Search.jsx";
+import SearchResults from "./SearchResults.jsx";
 import ItemDetails from "./ItemDetails.jsx";
 import AddItem from "./AddItem.jsx";
 import { Route, BrowserRouter, Link } from "react-router-dom";
@@ -11,7 +13,8 @@ class UnconnectedApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemsArray: []
+      itemsArray: [],
+      display: false
     };
   }
   componentDidMount = () => {
@@ -35,13 +38,29 @@ class UnconnectedApp extends Component {
     let displayItems = this.state.itemsArray.map(item => {
       return <Item path={item.image} itemId={item.id} />;
     });
+    let firstFive = displayItems.slice(0, 5);
+
+    let itemsDisplayed = () => {
+      if (!this.state.display) {
+        return firstFive;
+      }
+      return displayItems;
+    };
+
+    let setDisplayAll = () => {
+      this.setState({ display: true });
+    };
+
     return (
       <div>
         <h3>Welcome</h3>
         <Link to="/signup">Sign up</Link>
         <Link to="/login">Log in</Link>
         <Link to="/additem">Add item</Link>
-        <div className="item">{displayItems}</div>
+        <Search />
+        <SearchResults data={this.state.itemsArray} />
+        <button onClick={setDisplayAll}>Display All</button>
+        <div className="item">{itemsDisplayed()}</div>
       </div>
     );
   };
