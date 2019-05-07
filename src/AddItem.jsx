@@ -9,7 +9,8 @@ class AddItem extends Component {
       itemPrice: 0,
       itemImage: "",
       itemCategory: "",
-      itemStock: 0
+      itemStock: 0,
+      itemID: ""
     };
   }
 
@@ -39,15 +40,21 @@ class AddItem extends Component {
     console.log(event.target.value);
     this.setState({ itemStock: event.target.value });
   };
+
+  handleItemID = event => {
+    console.log(event.target.value);
+    this.setState({ itemID: event.target.value });
+  };
   handleSubmit = event => {
     event.preventDefault();
     let data = new FormData();
-    data.append("itemName", this.state.itemName);
-    data.append("itemDescription", this.state.itemDescription);
-    data.append("itemPrice", this.state.itemPrice);
-    data.append("itemImage", this.state.itemImage);
-    data.append("itemCategory", this.state.itemCategory);
-    data.append("itemStock", this.state.itemStock);
+    data.append("name", this.state.itemName);
+    data.append("description", this.state.itemDescription);
+    data.append("price", this.state.itemPrice);
+    data.append("item-image", this.state.itemImage);
+    data.append("category", this.state.itemCategory);
+    data.append("stock", this.state.itemStock);
+    data.append("itemId", this.state.itemID);
     fetch("http://localhost:4000/sellItems", {
       method: "POST",
       body: data,
@@ -84,6 +91,8 @@ class AddItem extends Component {
           </DropdownButton>
           How Many:
           <input type="text" onChange={this.handleItemStock} />
+          ID:
+          <input type="text" onChange={this.handleItemID} />
           <input type="submit" />
         </form>
       </div>
