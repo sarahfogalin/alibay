@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
+import StripeCheckout from "react-stripe-checkout";
 
 class ItemDetails extends Component {
   onToken = token => {
