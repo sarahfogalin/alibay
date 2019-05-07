@@ -4,6 +4,7 @@ import Signup from "./SignUp.jsx";
 import Login from "./LogIn.jsx";
 import Item from "./Item.jsx";
 import ItemDetails from "./ItemDetails.jsx";
+import AddItem from "./AddItem.jsx";
 import { Route, BrowserRouter, Link } from "react-router-dom";
 
 class UnconnectedApp extends Component {
@@ -26,6 +27,7 @@ class UnconnectedApp extends Component {
       .then(ResponseBody => {
         let body = JSON.parse(ResponseBody);
         this.setState({ itemsArray: body });
+        console.log("fetched all items", body);
       });
   };
 
@@ -38,7 +40,8 @@ class UnconnectedApp extends Component {
         <h3>Welcome</h3>
         <Link to="/signup">Sign up</Link>
         <Link to="/login">Log in</Link>
-        {displayItems}
+        <Link to="/additem">Add item</Link>
+        <div className="item">{displayItems}</div>
       </div>
     );
   };
@@ -48,6 +51,10 @@ class UnconnectedApp extends Component {
 
   renderLogin = () => {
     return <Login />;
+  };
+
+  renderAddItem = () => {
+    return <AddItem fetchItems={this.fetchItems} />;
   };
 
   renderItemDetails = routerData => {
@@ -70,6 +77,7 @@ class UnconnectedApp extends Component {
             path="/item/:id"
             render={this.renderItemDetails}
           />
+          <Route exact={true} path="/additem" render={this.renderAddItem} />
         </div>
       </BrowserRouter>
     );

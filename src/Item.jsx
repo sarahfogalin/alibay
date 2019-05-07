@@ -5,8 +5,10 @@ class Item extends Component {
   render = () => {
     return (
       <div>
-        item
-        <img src={"http://localhost:4000/" + this.props.path} />
+        <img
+          src={"http://localhost:4000/images/" + this.props.path}
+          height="100"
+        />
         <Link to={"/item/" + this.props.itemId}>Details</Link>
       </div>
     );

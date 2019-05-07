@@ -3,7 +3,16 @@ import React, { Component } from "react";
 
 class ItemDetails extends Component {
   render = () => {
-    return <div>description: {this.props.item.description}</div>;
+    return (
+      <ul>
+        <img
+          src={"http://localhost:4000/images/" + this.props.item.image}
+          height="200"
+        />
+        <li>description: {this.props.item.description}</li>
+        <li>price: ${this.props.item.price}</li>
+      </ul>
+    );
   };
 }
 
