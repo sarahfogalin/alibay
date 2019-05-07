@@ -48,13 +48,13 @@ class AddItem extends Component {
   handleSubmit = event => {
     event.preventDefault();
     let data = new FormData();
-    data.append("itemName", this.state.itemName);
-    data.append("itemDescription", this.state.itemDescription);
-    data.append("itemPrice", this.state.itemPrice);
+    data.append("name", this.state.itemName);
+    data.append("description", this.state.itemDescription);
+    data.append("price", this.state.itemPrice);
     data.append("item-image", this.state.itemImage);
-    data.append("itemCategory", this.state.itemCategory);
-    data.append("itemStock", this.state.itemStock);
-    data.append("itemID", this.state.itemID);
+    data.append("category", this.state.itemCategory);
+    data.append("stock", this.state.itemStock);
+    data.append("itemId", this.state.itemID);
     fetch("http://localhost:4000/sellItems", {
       method: "POST",
       body: data,
@@ -64,7 +64,6 @@ class AddItem extends Component {
         return response.text();
       })
       .then(ResponseBody => {
-        debugger;
         let body = JSON.parse(ResponseBody);
         if (body.success) {
           this.props.fetchItems();
