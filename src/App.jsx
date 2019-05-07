@@ -29,7 +29,7 @@ class UnconnectedApp extends Component {
       })
       .then(ResponseBody => {
         let body = JSON.parse(ResponseBody);
-        this.setState({ itemsArray: body });
+        this.setState({ itemsArray: body.items });
         console.log("fetched all items", body);
       });
   };
@@ -56,8 +56,10 @@ class UnconnectedApp extends Component {
         <h3>Welcome {this.props.username}</h3>
         {!this.props.loggedIn && (
           <div>
-            <Link to="/signup">Sign up</Link>
-            <Link to="/login">Log in</Link>
+            <h4>Signup</h4>
+            <Signup />
+            <h4>Log In</h4>
+            <Login />
           </div>
         )}
         <Link to="/additem">Add item</Link>
@@ -68,13 +70,13 @@ class UnconnectedApp extends Component {
       </div>
     );
   };
-  renderSignup = () => {
-    return <Signup />;
-  };
+  // renderSignup = () => {
+  //   return <Signup />;
+  // };
 
-  renderLogin = () => {
-    return <Login />;
-  };
+  // renderLogin = () => {
+  //   return <Login />;
+  // };
 
   renderAddItem = () => {
     return <AddItem fetchItems={this.fetchItems} />;
@@ -94,8 +96,8 @@ class UnconnectedApp extends Component {
       <BrowserRouter>
         <div>
           <Route exact={true} path="/" render={this.renderHomepage} />
-          <Route exact={true} path="/signup" render={this.renderSignup} />
-          <Route exact={true} path="/login" render={this.renderLogin} />
+          {/* <Route exact={true} path="/signup" render={this.renderSignup} />
+          <Route exact={true} path="/login" render={this.renderLogin} /> */}
           <Route
             exact={true}
             path="/item/:id"
