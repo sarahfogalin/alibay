@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 class UnconnectedLogin extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: "", password: "" };
+    this.state = { username: "bob", password: "" };
   }
 
   handleUsernameChange = event => {
@@ -39,6 +39,10 @@ class UnconnectedLogin extends Component {
           return;
         }
         this.props.dispatch({ type: "login-success" });
+        this.props.dispatch({
+          type: "set-username",
+          username: this.state.username
+        });
       });
   };
 
@@ -49,7 +53,7 @@ class UnconnectedLogin extends Component {
           username:
           <input type="text" onChange={this.handleUsernameChange} />
           password:
-          <input type="text" onChange={this.handleUsernameChange} />
+          <input type="text" onChange={this.handlePasswordChange} />
           <input type="submit" />
         </form>
       </div>
@@ -57,6 +61,10 @@ class UnconnectedLogin extends Component {
   };
 }
 
-let Login = connect()(UnconnectedLogin);
+let mapStateToProps = state => {
+  return { username: state.username };
+};
+
+let Login = connect(mapStateToProps)(UnconnectedLogin);
 
 export default Login;

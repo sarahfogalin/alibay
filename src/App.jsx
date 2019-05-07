@@ -53,9 +53,13 @@ class UnconnectedApp extends Component {
 
     return (
       <div>
-        <h3>Welcome</h3>
-        <Link to="/signup">Sign up</Link>
-        <Link to="/login">Log in</Link>
+        <h3>Welcome {this.props.username}</h3>
+        {!this.props.loggedIn && (
+          <div>
+            <Link to="/signup">Sign up</Link>
+            <Link to="/login">Log in</Link>
+          </div>
+        )}
         <Link to="/additem">Add item</Link>
         <Search />
         <SearchResults data={this.state.itemsArray} />
@@ -105,7 +109,10 @@ class UnconnectedApp extends Component {
 }
 
 let mapStateToProps = state => {
-  return {};
+  return {
+    username: state.username,
+    loggedIn: state.loggedIn
+  };
 };
 
 let App = connect(mapStateToProps)(UnconnectedApp);

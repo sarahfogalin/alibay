@@ -26,7 +26,17 @@ class UnconnectedSignUp extends Component {
     fetch("http://localhost:4000/signup", {
       method: "POST",
       body: data
-    });
+    })
+      .then(response => {
+        return response.text();
+      })
+      .then(ResponseBody => {
+        console.log(ResponseBody);
+        let body = JSON.parse(ResponseBody);
+        if (body.success) {
+          alert("You're all signed up");
+        }
+      });
   };
 
   render = () => {
@@ -36,7 +46,7 @@ class UnconnectedSignUp extends Component {
           username:
           <input type="text" onChange={this.handleUsernameChange} />
           password:
-          <input type="text" onChange={this.handleUsernameChange} />
+          <input type="text" onChange={this.handlePasswordChange} />
           <input type="submit" />
         </form>
       </div>
