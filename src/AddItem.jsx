@@ -82,19 +82,27 @@ class AddItem extends Component {
         <form onSubmit={this.handleSubmit}>
           <div>
             Item Name:
-            <input type="text" onChange={this.handleItemName} />
+            <input type="text" onChange={this.handleItemName} className="box" />
           </div>
           <div>
             Item Description:
-            <input type="text" onChange={this.handleItemDesc} />
+            <textarea rows="3" onChange={this.handleItemDesc} className="box" />
           </div>
           <div>
             Price:
-            <input type="number" onChange={this.handleItemPrice} />
+            <input
+              type="number"
+              onChange={this.handleItemPrice}
+              className="box"
+            />
           </div>
           <div>
             Image:
-            <input type="file" onChange={this.handleItemImage} />
+            <input
+              type="file"
+              onChange={this.handleItemImage}
+              className="box"
+            />
           </div>
           <div>
             Category:
@@ -102,6 +110,7 @@ class AddItem extends Component {
               required
               name="dropdown"
               onChange={this.handleCategoryChange}
+              className="box"
             >
               <option value="undefined"> </option>
               <option value="Clothing">Clothing</option>
@@ -111,11 +120,15 @@ class AddItem extends Component {
           </div>
           <div>
             How Many:
-            <input type="text" onChange={this.handleItemStock} />
+            <input
+              type="text"
+              onChange={this.handleItemStock}
+              className="box"
+            />
           </div>
           <div>
             ID:
-            <input type="text" onChange={this.handleItemID} />
+            <input type="text" onChange={this.handleItemID} className="box" />
           </div>
           <div>
             <input type="submit" />

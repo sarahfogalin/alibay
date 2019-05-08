@@ -36,3 +36,31 @@ section {
 body {
   background-image: url("/catbg.jpg");
 }
+
+.item-details {
+  border: 5px solid white;
+  height: fit-content;
+  width: 75%;
+  background-color: peachpuff;
+  padding: 10px;
+  display: flex;
+}
+
+.details-pic {
+  height: 200px;
+}
+
+li {
+  list-style-type: none;
+}
+
+.list-details {
+  padding: 10px;
+}
+
+.box {
+  height: 20px;
+  width: 300px;
+  font-size: 20px;
+  padding: 20px;
+}
