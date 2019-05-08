@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Modal from "react-modal";
 
 class UnconnectedLogin extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: "bob", password: "" };
+    this.state = {
+      username: "bob",
+      password: "",
+      modalIsOpen: false
+    };
   }
 
   handleUsernameChange = event => {
@@ -49,6 +54,7 @@ class UnconnectedLogin extends Component {
   render = () => {
     return (
       <div>
+        <h1>Login</h1>
         <form onSubmit={this.handleSubmit}>
           username:
           <input type="text" onChange={this.handleUsernameChange} />

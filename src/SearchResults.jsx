@@ -7,6 +7,7 @@ class UnconnectedSearchResults extends Component {
     let searchResults = this.props.searchResults;
     return (
       <div className="item">
+        console.log("searchResults")
         {searchResults.map(result => {
           return (
             <div>

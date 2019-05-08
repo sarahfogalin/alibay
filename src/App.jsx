@@ -9,13 +9,18 @@ import SearchResults from "./SearchResults.jsx";
 import ItemDetails from "./ItemDetails.jsx";
 import AddItem from "./AddItem.jsx";
 import { Route, BrowserRouter, Link } from "react-router-dom";
+import Modal from "react-modal";
+
+Modal.setAppElement("#root");
 
 class UnconnectedApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
       itemsArray: [],
-      display: false
+      display: false,
+      loginModalIsOpen: false,
+      signupModalIsOpen: false
     };
   }
   componentDidMount = () => {
@@ -52,6 +57,20 @@ class UnconnectedApp extends Component {
         console.log("fetched all items", body);
       });
   };
+  openLoginModal = () => {
+    this.setState({ loginModalIsOpen: true });
+  };
+  openSignupModal = () => {
+    this.setState({ signupModalIsOpen: true });
+  };
+
+  closeLoginModal = () => {
+    this.setState({ loginModalIsOpen: false });
+  };
+
+  closeSignupModal = () => {
+    this.setState({ signupModalIsOpen: false });
+  };
 
   renderHomepage = () => {
     console.log(this.state.itemsArray);
@@ -76,10 +95,17 @@ class UnconnectedApp extends Component {
         <h3>Welcome {this.props.username}</h3>
         {!this.props.loggedIn && (
           <div>
-            <h4>Signup</h4>
-            <Signup />
-            <h4>Log In</h4>
-            <Login />
+            <button onClick={this.openSignupModal}>Open Signup Modal</button>
+            <Modal isOpen={this.state.signupModalIsOpen}>
+              <Signup />
+              <button onClick={this.closeSignupModal}>close</button>
+            </Modal>
+
+            <button onClick={this.openLoginModal}>Open Login Modal</button>
+            <Modal isOpen={this.state.loginModalIsOpen}>
+              <Login />
+              <button onClick={this.closeLoginModal}>close</button>
+            </Modal>
           </div>
         )}
         {this.props.loggedIn && (
@@ -116,7 +142,7 @@ class UnconnectedApp extends Component {
   render = () => {
     console.log("state", this.state);
     return (
-      <div>
+      <div id="app">
         <Route exact={true} path="/" render={this.renderHomepage} />
         <Route exact={true} path="/item/:id" render={this.renderItemDetails} />
         <Route exact={true} path="/additem" render={this.renderAddItem} />

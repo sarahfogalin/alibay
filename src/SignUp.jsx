@@ -64,6 +64,7 @@ class UnconnectedSignUp extends Component {
   render = () => {
     return (
       <div>
+        <h1>Sign up</h1>
         <form onSubmit={this.handleSubmit}>
           username:
           <input type="text" onChange={this.handleUsernameChange} />
