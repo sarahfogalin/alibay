@@ -117,7 +117,7 @@ class AddItem extends Component {
               <option value="" selected>
                 Choose here
               </option>
-              <option value="undefined"> </option>
+              <option value="undefined"> Choose here</option>
               <option value="Clothing">Clothing</option>
               <option value="Footwear">Footwear</option>
               <option value="Accessories">Accessories</option>
