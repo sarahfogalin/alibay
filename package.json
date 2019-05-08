@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "react-modal": "^3.8.1",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
     "react-stripe-checkout": "^2.6.3",

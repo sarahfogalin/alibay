@@ -9,13 +9,17 @@ import SearchResults from "./SearchResults.jsx";
 import ItemDetails from "./ItemDetails.jsx";
 import AddItem from "./AddItem.jsx";
 import { Route, BrowserRouter, Link } from "react-router-dom";
+import Modal from "react-modal";
+Modal.setAppElement("#root");
 
 class UnconnectedApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
       itemsArray: [],
-      display: false
+      display: false,
+      loginModalIsOpen: false,
+      signupModalIsOpen: false
     };
   }
   componentDidMount = () => {
@@ -53,6 +57,21 @@ class UnconnectedApp extends Component {
       });
   };
 
+  openLoginModal = () => {
+    this.setState({ loginModalIsOpen: true });
+  };
+  openSignupModal = () => {
+    this.setState({ signupModalIsOpen: true });
+  };
+
+  closeLoginModal = () => {
+    this.setState({ loginModalIsOpen: false });
+  };
+
+  closeSignupModal = () => {
+    this.setState({ signupModalIsOpen: false });
+  };
+
   renderHomepage = () => {
     console.log(this.state.itemsArray);
     let displayItems = this.state.itemsArray.map(item => {
@@ -73,25 +92,40 @@ class UnconnectedApp extends Component {
 
     return (
       <div>
-        <h3>Welcome {this.props.username}</h3>
-        {!this.props.loggedIn && (
-          <div>
-            <h4>Signup</h4>
-            <Signup />
-            <h4>Log In</h4>
-            <Login />
-          </div>
-        )}
-        {this.props.loggedIn && (
-          <div>
-            <Logout />
-            <Link to="/additem">Add item</Link>
-          </div>
-        )}
+        <img src="./catbg2.jpg" className="catpic" />
+        <div className="flex nav">
+          <h3>Welcome {this.props.username}</h3>
+          {!this.props.loggedIn && (
+            <div className="flex">
+              <button onClick={this.openSignupModal}>Open Signup Modal</button>
+              <Modal isOpen={this.state.signupModalIsOpen}>
+                <Signup />
+                <button onClick={this.closeSignupModal}>close</button>
+              </Modal>
 
-        <Search />
-        <button onClick={setDisplayAll}>Display All</button>
-        <div className="item">{itemsDisplayed()}</div>
+              <button onClick={this.openLoginModal}>Open Login Modal</button>
+              <Modal isOpen={this.state.loginModalIsOpen}>
+                <Login />
+                <button onClick={this.closeLoginModal}>close</button>
+              </Modal>
+            </div>
+          )}
+          <Search />
+          {this.props.loggedIn && (
+            <div className="flex">
+              <div>
+                <Link to="/additem">Add Item For Sale</Link>
+              </div>
+              <div className="logout">
+                <Logout />
+              </div>
+            </div>
+          )}
+        </div>
+        <div>
+          <button onClick={setDisplayAll}>Display All</button>
+          <div className="item">{itemsDisplayed()}</div>
+        </div>
       </div>
     );
   };
