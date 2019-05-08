@@ -9,7 +9,7 @@ class AddItem extends Component {
       itemDescription: "",
       itemPrice: 0,
       itemImage: "",
-      itemCategory: undefined,
+      itemCategory: "Choose",
       itemStock: 0,
       itemID: ""
     };
@@ -33,7 +33,7 @@ class AddItem extends Component {
     console.log(event.target.files);
     this.setState({ itemImage: event.target.files[0] });
   };
-  handleItemCategory = event => {
+  handleCategoryChange = event => {
     console.log(event.target.value);
     this.setState({ itemCategory: event.target.value });
   };
@@ -77,6 +77,7 @@ class AddItem extends Component {
   };
 
   render = () => {
+    console.log("this the option we want ", this.state.itemCategory);
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -109,15 +110,11 @@ class AddItem extends Component {
           </div>
           <div>
             <select
-              required
-              name="dropdown"
+              value="choose"
               onChange={this.handleCategoryChange}
               className="box"
             >
-              <option value="" selected>
-                Choose here
-              </option>
-              <option value="undefined"> Choose here</option>
+              <option value="choose">Choose here</option>
               <option value="Clothing">Clothing</option>
               <option value="Footwear">Footwear</option>
               <option value="Accessories">Accessories</option>

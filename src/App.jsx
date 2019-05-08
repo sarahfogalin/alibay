@@ -20,6 +20,24 @@ class UnconnectedApp extends Component {
   }
   componentDidMount = () => {
     this.fetchItems();
+    fetch("http://localhost:4000/autoLogin", {
+      credentials: "include"
+    })
+      .then(response => {
+        return response.text();
+      })
+      .then(ResponseBody => {
+        console.log("***inside the auto login res body: ", ResponseBody);
+        let body = JSON.parse(ResponseBody);
+        if (body.success) {
+          console.log("** dispatch");
+          this.props.dispatch({ type: "login-success" });
+          this.props.dispatch({
+            type: "set-username",
+            username: body.username
+          });
+        }
+      });
   };
   fetchItems = () => {
     fetch("http://localhost:4000/allItems", {
@@ -72,7 +90,6 @@ class UnconnectedApp extends Component {
         )}
 
         <Search />
-        <SearchResults data={this.state.itemsArray} />
         <button onClick={setDisplayAll}>Display All</button>
         <div className="item">{itemsDisplayed()}</div>
       </div>
@@ -81,6 +98,10 @@ class UnconnectedApp extends Component {
 
   renderAddItem = () => {
     return <AddItem fetchItems={this.fetchItems} />;
+  };
+
+  renderSearchResults = () => {
+    return <SearchResults searchResults={this.props.searchResults} />;
   };
 
   renderItemDetails = routerData => {
@@ -95,17 +116,16 @@ class UnconnectedApp extends Component {
   render = () => {
     console.log("state", this.state);
     return (
-      <BrowserRouter>
-        <div>
-          <Route exact={true} path="/" render={this.renderHomepage} />
-          <Route
-            exact={true}
-            path="/item/:id"
-            render={this.renderItemDetails}
-          />
-          <Route exact={true} path="/additem" render={this.renderAddItem} />
-        </div>
-      </BrowserRouter>
+      <div>
+        <Route exact={true} path="/" render={this.renderHomepage} />
+        <Route exact={true} path="/item/:id" render={this.renderItemDetails} />
+        <Route exact={true} path="/additem" render={this.renderAddItem} />
+        <Route
+          exact={true}
+          path="/search-results"
+          render={this.renderSearchResults}
+        />
+      </div>
     );
   };
 }
@@ -113,7 +133,8 @@ class UnconnectedApp extends Component {
 let mapStateToProps = state => {
   return {
     username: state.username,
-    loggedIn: state.loggedIn
+    loggedIn: state.loggedIn,
+    searchResults: state.results
   };
 };
 
