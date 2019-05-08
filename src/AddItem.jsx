@@ -105,20 +105,18 @@ class AddItem extends Component {
             />
           </div>
           <div>
-            <input
-              type="file"
-              onChange={this.handleItemImage}
-              className="box"
-            />
+            <input type="file" onChange={this.handleItemImage} />
           </div>
           <div>
-            Category:
             <select
               required
               name="dropdown"
               onChange={this.handleCategoryChange}
               className="box"
             >
+              <option value="" selected>
+                Choose here
+              </option>
               <option value="undefined"> </option>
               <option value="Clothing">Clothing</option>
               <option value="Footwear">Footwear</option>
@@ -126,16 +124,20 @@ class AddItem extends Component {
             </select>
           </div>
           <div>
-            How Many:
             <input
-              type="text"
+              type="number"
               onChange={this.handleItemStock}
               className="box"
+              placeholder="HOW MANY IN STOCK"
             />
           </div>
           <div>
-            ID:
-            <input type="text" onChange={this.handleItemID} className="box" />
+            <input
+              type="text"
+              onChange={this.handleItemID}
+              className="box"
+              placeholder="CHOOSE AN ID"
+            />
           </div>
           <div>
             <input type="submit" />
