@@ -1,0 +1,75 @@
+/* BASIC SETUP */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans Condensed", sans-serif;
+}
+
+html {
+  background-color: #ffff;
+  color: #555555;
+  font-family: "Open Sans", "Arial", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  text-rendering: optimizeLegibility;
+}
+
+/* REUSABLE COMPONENTS */
+
+.row {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 80px 0;
+}
+
+.box {
+  padding: 1%;
+}
+
+/* HEADER */
+
+body {
+  background-image: url("/catbg.jpg");
+}
+
+.item-details {
+  border: 5px solid white;
+  height: fit-content;
+  width: 75%;
+  background-color: peachpuff;
+  padding: 10px;
+  display: flex;
+}
+
+.details-pic {
+  height: 200px;
+}
+
+li {
+  list-style-type: none;
+}
+
+.list-details {
+  padding: 10px;
+}
+
+.box {
+  height: 20px;
+  width: 300px;
+  font-size: 20px;
+  padding: 20px;
+  margin: 5px;
+}
+
+.big-box {
+  height: 120px;
+  width: 300px;
+  font-size: 20px;
+  padding: 20px;
+  margin: 5px;
+}
