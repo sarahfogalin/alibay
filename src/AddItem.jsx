@@ -81,23 +81,30 @@ class AddItem extends Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <div>
-            Item Name:
-            <input type="text" onChange={this.handleItemName} className="box" />
+            <input
+              type="text"
+              onChange={this.handleItemName}
+              className="box"
+              placeholder="ITEM NAME"
+            />
           </div>
           <div>
-            Item Description:
-            <textarea rows="3" onChange={this.handleItemDesc} className="box" />
+            <textarea
+              rows="3"
+              onChange={this.handleItemDesc}
+              className="big-box"
+              placeholder="DESCRIPTION..."
+            />
           </div>
           <div>
-            Price:
             <input
               type="number"
               onChange={this.handleItemPrice}
               className="box"
+              placeholder="$$$"
             />
           </div>
           <div>
-            Image:
             <input
               type="file"
               onChange={this.handleItemImage}

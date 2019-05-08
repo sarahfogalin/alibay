@@ -63,4 +63,13 @@ li {
   width: 300px;
   font-size: 20px;
   padding: 20px;
+  margin: 5px;
+}
+
+.big-box {
+  height: 120px;
+  width: 300px;
+  font-size: 20px;
+  padding: 20px;
+  margin: 5px;
 }
