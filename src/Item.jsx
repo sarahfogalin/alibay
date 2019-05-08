@@ -9,7 +9,9 @@ class Item extends Component {
           src={"http://localhost:4000/images/" + this.props.path}
           height="100"
         />
-        <Link to={"/item/" + this.props.itemId}>Details</Link>
+        <div>
+          <Link to={"/item/" + this.props.itemId}>Details</Link>
+        </div>
       </div>
     );
   };

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 class AddItem extends Component {
   constructor(props) {
@@ -68,6 +69,7 @@ class AddItem extends Component {
         if (body.success) {
           this.props.fetchItems();
           console.log(body);
+          this.props.history.push("/");
         }
       });
   };
@@ -97,4 +99,4 @@ class AddItem extends Component {
   };
 }
 
-export default AddItem;
+export default withRouter(AddItem);

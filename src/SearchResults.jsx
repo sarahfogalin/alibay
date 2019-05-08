@@ -1,24 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Item from "./Item.jsx";
 
 class UnconnectedSearchResults extends Component {
   render = () => {
-    let results = this.props.data.filter(item => {
-      return item.name.includes(this.props.query);
-    });
+    let searchResults = this.props.searchResults;
     return (
-      <div>
-        {results.map(result => {
-          return <div>{result.name}</div>;
+      <div className="item">
+        {searchResults.map(result => {
+          return (
+            <div>
+              <Item path={result.image} itemId={result.id} />
+            </div>
+          );
         })}
       </div>
     );
   };
 }
 
-let mapStateToProps = state => {
-  return { query: state.searchQuery };
-};
-
-let SearchResults = connect(mapStateToProps)(UnconnectedSearchResults);
+let SearchResults = connect()(UnconnectedSearchResults);
 export default SearchResults;

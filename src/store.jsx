@@ -16,12 +16,15 @@ let reducer = (state, action) => {
   if (action.type === "logout") {
     return { ...state, loggedIn: false, username: "anonymous" };
   }
+  if (action.type === "search-results") {
+    return { ...state, results: action.results };
+  }
   return state;
 };
 
 const store = createStore(
   reducer,
-  { loggedIn: false, searchQuery: "", username: "anonymous" },
+  { loggedIn: false, username: "anonymous", results: [] },
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 export default store;

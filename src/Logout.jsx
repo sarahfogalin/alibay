@@ -4,7 +4,17 @@ import { connect } from "react-redux";
 class UnconnectedLogout extends Component {
   handleLogout = () => {
     console.log("logging out...");
-    this.props.dispatch({ type: "logout" });
+    fetch("http://localhost:4000/logout", { credentials: "include" })
+      .then(response => {
+        return response.text();
+      })
+      .then(ResponseBody => {
+        console.log("RES BOD: ", ResponseBody);
+        let body = JSON.parse(ResponseBody);
+        if (body.success) {
+          this.props.dispatch({ type: "logout" });
+        }
+      });
   };
   render = () => {
     return (
