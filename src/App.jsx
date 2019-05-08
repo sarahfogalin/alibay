@@ -9,6 +9,7 @@ import SearchResults from "./SearchResults.jsx";
 import ItemDetails from "./ItemDetails.jsx";
 import AddItem from "./AddItem.jsx";
 import { Route, BrowserRouter, Link } from "react-router-dom";
+import "./main.css";
 
 class UnconnectedApp extends Component {
   constructor(props) {
@@ -54,6 +55,7 @@ class UnconnectedApp extends Component {
   };
 
   renderHomepage = () => {
+    console.log(this.state.itemsArray);
     let displayItems = this.state.itemsArray.map(item => {
       return <Item path={item.image} itemId={item.id} />;
     });
@@ -72,21 +74,25 @@ class UnconnectedApp extends Component {
 
     return (
       <div>
-        <h3>Welcome {this.props.username}</h3>
-        {!this.props.loggedIn && (
-          <div>
-            <h4>Signup</h4>
-            <Signup />
-            <h4>Log In</h4>
-            <Login />
-          </div>
-        )}
-        {this.props.loggedIn && (
-          <div>
-            <Logout />
-            <Link to="/additem">Add item</Link>
-          </div>
-        )}
+        <div>
+          <nav>
+            <h3>Welcome {this.props.username}</h3>
+            {!this.props.loggedIn && (
+              <div>
+                <h4>Signup</h4>
+                <Signup />
+                <h4>Log In</h4>
+                <Login />
+              </div>
+            )}
+            {this.props.loggedIn && (
+              <div>
+                <Logout />
+                <Link to="/additem">Add item</Link>
+              </div>
+            )}
+          </nav>
+        </div>
 
         <Search />
         <button onClick={setDisplayAll}>Display All</button>
@@ -113,6 +119,7 @@ class UnconnectedApp extends Component {
     return <ItemDetails item={candidates[0]} />;
   };
   render = () => {
+    console.log("state", this.state);
     return (
       <div>
         <Route exact={true} path="/" render={this.renderHomepage} />

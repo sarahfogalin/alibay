@@ -1,8 +1,38 @@
-body {
-  background-color: #bbb;
+/* BASIC SETUP */
+
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans Condensed", sans-serif;
 }
 
-.item {
-  display: flex;
+html {
+  background-color: #ffff;
+  color: #555555;
+  font-family: "Open Sans", "Arial", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  text-rendering: optimizeLegibility;
+}
+
+/* REUSABLE COMPONENTS */
+
+.row {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 80px 0;
+}
+
+.box {
+  padding: 1%;
+}
+
+/* HEADER */
+
+body {
+  background-image: url("/catbg.jpg");
 }

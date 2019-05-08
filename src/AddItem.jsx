@@ -9,7 +9,7 @@ class AddItem extends Component {
       itemDescription: "",
       itemPrice: 0,
       itemImage: "",
-      itemCategory: "",
+      itemCategory: undefined,
       itemStock: 0,
       itemID: ""
     };
@@ -47,6 +47,7 @@ class AddItem extends Component {
     this.setState({ itemID: event.target.value });
   };
   handleSubmit = event => {
+    console.log("in handle sbmit");
     event.preventDefault();
     let data = new FormData();
     data.append("name", this.state.itemName);
@@ -66,6 +67,7 @@ class AddItem extends Component {
       })
       .then(ResponseBody => {
         let body = JSON.parse(ResponseBody);
+        console.log(body);
         if (body.success) {
           this.props.fetchItems();
           console.log(body);
@@ -78,21 +80,46 @@ class AddItem extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          Item Name:
-          <input type="text" onChange={this.handleItemName} />
-          Item Description:
-          <input type="text" onChange={this.handleItemDesc} />
-          Price:
-          <input type="number" onChange={this.handleItemPrice} />
-          Image:
-          <input type="file" onChange={this.handleItemImage} />
-          Category:
-          <input type="text" onChange={this.handleItemCategory} />
-          How Many:
-          <input type="text" onChange={this.handleItemStock} />
-          ID:
-          <input type="text" onChange={this.handleItemID} />
-          <input type="submit" />
+          <div>
+            Item Name:
+            <input type="text" onChange={this.handleItemName} />
+          </div>
+          <div>
+            Item Description:
+            <input type="text" onChange={this.handleItemDesc} />
+          </div>
+          <div>
+            Price:
+            <input type="number" onChange={this.handleItemPrice} />
+          </div>
+          <div>
+            Image:
+            <input type="file" onChange={this.handleItemImage} />
+          </div>
+          <div>
+            Category:
+            <select
+              required
+              name="dropdown"
+              onChange={this.handleCategoryChange}
+            >
+              <option value="undefined"> </option>
+              <option value="Clothing">Clothing</option>
+              <option value="Footwear">Footwear</option>
+              <option value="Accessories">Accessories</option>
+            </select>
+          </div>
+          <div>
+            How Many:
+            <input type="text" onChange={this.handleItemStock} />
+          </div>
+          <div>
+            ID:
+            <input type="text" onChange={this.handleItemID} />
+          </div>
+          <div>
+            <input type="submit" />
+          </div>
         </form>
       </div>
     );
