@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Signup from "./SignUp.jsx";
 import Login from "./LogIn.jsx";
+import Logout from "./Logout.jsx";
 import Item from "./Item.jsx";
 import Search from "./Search.jsx";
 import SearchResults from "./SearchResults.jsx";
@@ -62,7 +63,13 @@ class UnconnectedApp extends Component {
             <Login />
           </div>
         )}
-        <Link to="/additem">Add item</Link>
+        {this.props.loggedIn && (
+          <div>
+            <Logout />
+            <Link to="/additem">Add item</Link>
+          </div>
+        )}
+
         <Search />
         <SearchResults data={this.state.itemsArray} />
         <button onClick={setDisplayAll}>Display All</button>
@@ -70,13 +77,6 @@ class UnconnectedApp extends Component {
       </div>
     );
   };
-  // renderSignup = () => {
-  //   return <Signup />;
-  // };
-
-  // renderLogin = () => {
-  //   return <Login />;
-  // };
 
   renderAddItem = () => {
     return <AddItem fetchItems={this.fetchItems} />;
@@ -96,8 +96,6 @@ class UnconnectedApp extends Component {
       <BrowserRouter>
         <div>
           <Route exact={true} path="/" render={this.renderHomepage} />
-          {/* <Route exact={true} path="/signup" render={this.renderSignup} />
-          <Route exact={true} path="/login" render={this.renderLogin} /> */}
           <Route
             exact={true}
             path="/item/:id"

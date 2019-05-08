@@ -13,6 +13,9 @@ let reducer = (state, action) => {
   if (action.type === "set-username") {
     return { ...state, username: action.username };
   }
+  if (action.type === "logout") {
+    return { ...state, loggedIn: false, username: "anonymous" };
+  }
   return state;
 };
 
