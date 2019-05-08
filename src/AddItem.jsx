@@ -47,7 +47,7 @@ class AddItem extends Component {
     this.setState({ itemID: event.target.value });
   };
   handleSubmit = event => {
-    console.log("in handle sbmit");
+    console.log("in handle submit");
     event.preventDefault();
     let data = new FormData();
     data.append("name", this.state.itemName);
