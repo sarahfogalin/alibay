@@ -16,18 +16,28 @@ class ItemDetails extends Component {
 
   render() {
     return (
-      <ul>
+      <div className="item-details">
         <img
+          className="details-pic"
           src={"http://localhost:4000/images/" + this.props.item.image}
-          height="200"
         />
-        <li>description: {this.props.item.description}</li>
-        <li>price: ${this.props.item.price}</li>
-        <StripeCheckout
-          token={this.onToken}
-          stripeKey="pk_test_18GnVPYwKXom1VEc1NhhvGNC00AF7EI0GC"
-        />
-      </ul>
+        <div className="list-details">
+          <h3>{this.props.item.name}</h3>
+
+          <ul>
+            <li>Price: ${this.props.item.price}</li>
+            <li>
+              {this.props.item.stock} left in stock from{" "}
+              {this.props.item.seller}
+            </li>
+          </ul>
+          <p>{this.props.item.description}</p>
+          <StripeCheckout
+            token={this.onToken}
+            stripeKey="pk_test_18GnVPYwKXom1VEc1NhhvGNC00AF7EI0GC"
+          />
+        </div>
+      </div>
     );
   }
 }

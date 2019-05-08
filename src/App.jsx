@@ -89,7 +89,7 @@ class UnconnectedApp extends Component {
     let candidates = itemsArray.filter(item => {
       return item.id === itemId;
     });
-    debugger;
+
     return <ItemDetails item={candidates[0]} />;
   };
   render = () => {
