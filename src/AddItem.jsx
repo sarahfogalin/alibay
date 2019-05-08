@@ -46,6 +46,7 @@ class AddItem extends Component {
     this.setState({ itemID: event.target.value });
   };
   handleSubmit = event => {
+    console.log("in handle sbmit");
     event.preventDefault();
     let data = new FormData();
     data.append("name", this.state.itemName);
@@ -65,9 +66,9 @@ class AddItem extends Component {
       })
       .then(ResponseBody => {
         let body = JSON.parse(ResponseBody);
+        console.log(body);
         if (body.success) {
           this.props.fetchItems();
-          console.log(body);
         }
       });
   };
