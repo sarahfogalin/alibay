@@ -70,7 +70,7 @@ class UnconnectedApp extends Component {
     return (
       <div className="best-items">
         <button onClick={setDisplayAll}>SEE ALL</button>
-        <div>{itemsDisplayed()}</div>
+        <div className="items-displayed">{itemsDisplayed()}</div>
       </div>
     );
   };
