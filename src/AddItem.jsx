@@ -9,7 +9,7 @@ class AddItem extends Component {
       itemDescription: "",
       itemPrice: 0,
       itemImage: "",
-      itemCategory: "Choose",
+      itemCategory: undefined,
       itemStock: 0,
       itemID: ""
     };
@@ -79,7 +79,7 @@ class AddItem extends Component {
   render = () => {
     console.log("this the option we want ", this.state.itemCategory);
     return (
-      <div>
+      <div className="peach-box">
         <form onSubmit={this.handleSubmit}>
           <div>
             <input
@@ -110,11 +110,14 @@ class AddItem extends Component {
           </div>
           <div>
             <select
-              value="choose"
+              required
+              name="dropdown"
               onChange={this.handleCategoryChange}
               className="box"
             >
-              <option value="choose">Choose here</option>
+              <option value="" selected disabled>
+                Choose here
+              </option>
               <option value="Clothing">Clothing</option>
               <option value="Footwear">Footwear</option>
               <option value="Accessories">Accessories</option>
@@ -137,7 +140,7 @@ class AddItem extends Component {
             />
           </div>
           <div>
-            <input type="submit" />
+            <input type="submit" className="button" />
           </div>
         </form>
       </div>

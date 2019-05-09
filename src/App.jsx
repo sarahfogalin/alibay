@@ -8,7 +8,7 @@ import Search from "./Search.jsx";
 import SearchResults from "./SearchResults.jsx";
 import ItemDetails from "./ItemDetails.jsx";
 import AddItem from "./AddItem.jsx";
-import { Route, BrowserRouter, Link } from "react-router-dom";
+import { Route, BrowserRouter, Link, withRouter } from "react-router-dom";
 import Modal from "react-modal";
 Modal.setAppElement("#root");
 
@@ -98,15 +98,21 @@ class UnconnectedApp extends Component {
       this.setState({ display: true });
     };
 
+    let goHome = () => {
+      console.log("****going home...");
+      this.props.history.push("/");
+    };
+
     return (
       <div>
         <img src="./catbg2.jpg" className="catpic" />
-        <img src="./petlogo.png" className="logo" />
+        <img src="./petlogo.png" className="logo" onClick={goHome} />
         <div className="flex nav">
           <p className="welcome">Welcome {this.props.username}</p>
           {!this.props.loggedIn && (
-            <div className="flex">
-              <button className="button" onClick={this.openSignupModal}>
+            <div className="stayright flex">
+              <Search />
+              <button onClick={this.openSignupModal} className="button">
                 Sign Up
               </button>
               <Modal className="Modal" isOpen={this.state.signupModalIsOpen}>
@@ -137,7 +143,7 @@ class UnconnectedApp extends Component {
               </Modal>
             </div>
           )}
-          <Search />
+
           {this.props.loggedIn && (
             <div className="flex">
               <div>
@@ -161,12 +167,15 @@ class UnconnectedApp extends Component {
               </div>
 
               <div className="logout">
-                <Logout />
+                <div className="stayright flex">
+                  <Search />
+                  <Logout />
+                </div>
               </div>
             </div>
           )}
         </div>
-        <div>
+        <div className="best-items">
           <button onClick={setDisplayAll}>Display All</button>
           <div className="item">{itemsDisplayed()}</div>
         </div>
@@ -217,4 +226,4 @@ let mapStateToProps = state => {
 };
 
 let App = connect(mapStateToProps)(UnconnectedApp);
-export default App;
+export default withRouter(App);

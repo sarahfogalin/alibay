@@ -16,7 +16,7 @@ class ItemDetails extends Component {
 
   render() {
     return (
-      <div className="item-details">
+      <div className="peach-box">
         <img
           className="details-pic"
           src={"http://localhost:4000/images/" + this.props.item.image}
