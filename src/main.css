@@ -16,10 +16,20 @@ html {
 }
 p,
 a,
+<<<<<<< HEAD
 h1,
 h2,
 h3,
 li {
+=======
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+>>>>>>> 65860a1ff8483f9d2ac5ec96f67d5db290e362fe
   font-size: 20px;
 }
 
@@ -158,6 +168,7 @@ li {
   width: 100%;
   max-height: 250px;
   overflow: hidden;
+  border: 5px solid white;
 }
 
 .image {
@@ -166,4 +177,13 @@ li {
 
 .item-link {
   margin-top: auto;
+  text-decoration: none;
+  text-align: center;
+  color: rgb(71, 71, 71);
+  font-size: 25px;
+}
+
+.item-link:hover {
+  color: grey;
+  letter-spacing: 0.1px;
 }

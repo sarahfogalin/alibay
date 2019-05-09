@@ -52,7 +52,14 @@ class UnconnectedApp extends Component {
   renderHomepage = () => {
     console.log(this.state.itemsArray);
     let displayItems = this.state.itemsArray.map(item => {
-      return <Item path={item.image} itemId={item.id} />;
+      return (
+        <Item
+          path={item.image}
+          itemId={item.id}
+          name={item.name}
+          price={item.price}
+        />
+      );
     });
     let firstFour = displayItems.slice(0, 4);
 

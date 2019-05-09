@@ -12,7 +12,7 @@ class Item extends Component {
           />
         </div>
         <Link className="item-link" to={"/item/" + this.props.itemId}>
-          Details
+          {this.props.name} ${this.props.price}
         </Link>
       </div>
     );
