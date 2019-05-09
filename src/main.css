@@ -8,7 +8,6 @@
 }
 
 html {
-  background-color: #ffff;
   color: #555555;
   font-family: "Open Sans", "Arial", sans-serif;
   font-weight: 300;
@@ -85,6 +84,7 @@ li {
 }
 
 .stayright {
+  justify-content: flex-end;
   position: absolute;
   right: 5px;
 }
@@ -118,9 +118,27 @@ li {
   height: 100px;
   right: 10px;
   top: 10px;
+  cursor: pointer;
 }
 
 .welcome {
   font-size: 30px;
   padding: 12px 24px;
+}
+
+.searchbar {
+  background-image: url("/searchicon.png");
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  padding-left: 40px;
+  border-radius: 25px;
+}
+
+.searchbar:focus {
+  width: 100%;
+}
+
+.padded {
+  padding: 5px;
 }

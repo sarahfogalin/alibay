@@ -31,10 +31,14 @@ class UnconnectedSearch extends Component {
 
   render = () => {
     return (
-      <div>
+      <div className="padded">
         <form onSubmit={this.handleSubmit}>
-          <input type="text" onChange={this.handleSearch} className="box" />
-          <input type="submit" value="Search" className="button" />
+          <input
+            type="text"
+            onChange={this.handleSearch}
+            className="box searchbar"
+          />
+          {/* <input type="submit" value="Search" className="button" /> */}
         </form>
       </div>
     );

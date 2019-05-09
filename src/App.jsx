@@ -8,7 +8,7 @@ import Search from "./Search.jsx";
 import SearchResults from "./SearchResults.jsx";
 import ItemDetails from "./ItemDetails.jsx";
 import AddItem from "./AddItem.jsx";
-import { Route, BrowserRouter, Link } from "react-router-dom";
+import { Route, BrowserRouter, Link, withRouter } from "react-router-dom";
 import Modal from "react-modal";
 Modal.setAppElement("#root");
 
@@ -90,10 +90,15 @@ class UnconnectedApp extends Component {
       this.setState({ display: true });
     };
 
+    let goHome = () => {
+      console.log("****going home...");
+      this.props.history.push("/");
+    };
+
     return (
       <div>
         <img src="./catbg2.jpg" className="catpic" />
-        <img src="./petlogo.png" className="logo" />
+        <img src="./petlogo.png" className="logo" onClick={goHome} />
         <div className="flex nav">
           <p className="welcome">Welcome {this.props.username}</p>
           {!this.props.loggedIn && (
@@ -182,4 +187,4 @@ let mapStateToProps = state => {
 };
 
 let App = connect(mapStateToProps)(UnconnectedApp);
-export default App;
+export default withRouter(App);
