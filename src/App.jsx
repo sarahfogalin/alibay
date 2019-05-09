@@ -71,21 +71,6 @@ class UnconnectedApp extends Component {
     this.setState({ signupModalIsOpen: false });
   };
 
-  openLoginModal = () => {
-    this.setState({ loginModalIsOpen: true });
-  };
-  openSignupModal = () => {
-    this.setState({ signupModalIsOpen: true });
-  };
-
-  closeLoginModal = () => {
-    this.setState({ loginModalIsOpen: false });
-  };
-
-  closeSignupModal = () => {
-    this.setState({ signupModalIsOpen: false });
-  };
-
   renderHomepage = () => {
     console.log(this.state.itemsArray);
     let displayItems = this.state.itemsArray.map(item => {
