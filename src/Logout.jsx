@@ -20,7 +20,7 @@ class UnconnectedLogout extends Component {
     return (
       <div>
         <button onClick={this.handleLogout} className="button">
-          LOGOUT
+          Log Out
         </button>
       </div>
     );

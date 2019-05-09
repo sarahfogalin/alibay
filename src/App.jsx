@@ -19,7 +19,8 @@ class UnconnectedApp extends Component {
       itemsArray: [],
       display: false,
       loginModalIsOpen: false,
-      signupModalIsOpen: false
+      signupModalIsOpen: false,
+      itemModalIsOpen: false
     };
   }
   componentDidMount = () => {
@@ -71,6 +72,14 @@ class UnconnectedApp extends Component {
     this.setState({ signupModalIsOpen: false });
   };
 
+  openItemModal = () => {
+    this.setState({ itemModalIsOpen: true });
+  };
+
+  closeItemModal = () => {
+    this.setState({ itemModalIsOpen: false });
+  };
+
   renderHomepage = () => {
     console.log(this.state.itemsArray);
     let displayItems = this.state.itemsArray.map(item => {
@@ -97,21 +106,34 @@ class UnconnectedApp extends Component {
           <p className="welcome">Welcome {this.props.username}</p>
           {!this.props.loggedIn && (
             <div className="flex">
-              <button onClick={this.openSignupModal}>Sign Up</button>
+              <button className="button" onClick={this.openSignupModal}>
+                Sign Up
+              </button>
               <Modal className="Modal" isOpen={this.state.signupModalIsOpen}>
-                <Signup className="Content" />
-                <button onClick={this.closeSignupModal}>close</button>
+                <div class="modal-header">
+                  <span className="close" onClick={this.closeSignupModal}>
+                    &times;
+                  </span>
+                </div>
+                <div class="modal-body">
+                  <Signup />
+                </div>
+                <div class="modal-footer" />
               </Modal>
 
-              <button onClick={this.openLoginModal}>Login</button>
+              <button className="button" onClick={this.openLoginModal}>
+                Login
+              </button>
               <Modal className="Modal" isOpen={this.state.loginModalIsOpen}>
-                <Login className="Content" />
-                <button className="closeButton" onClick={this.closeLoginModal}>
-                  close
-                </button>
-                <button onClick={this.openSignupModal} className="button">
-                  Sign Up
-                </button>
+                <div class="modal-header">
+                  <span className="close" onClick={this.closeLoginModal}>
+                    &times;
+                  </span>
+                </div>
+                <div class="modal-body">
+                  <Login />
+                </div>
+                <div class="modal-footer" />
               </Modal>
             </div>
           )}
@@ -119,9 +141,23 @@ class UnconnectedApp extends Component {
           {this.props.loggedIn && (
             <div className="flex">
               <div>
-                <Link to="/additem" className="button">
+                <button className="button" onClick={this.openItemModal}>
                   Add Item For Sale
-                </Link>
+                </button>
+                <Modal
+                  className="itemModal"
+                  isOpen={this.state.itemModalIsOpen}
+                >
+                  <div class="modal-header">
+                    <span className="close" onClick={this.closeItemModal}>
+                      &times;
+                    </span>
+                  </div>
+                  <div class="itemModal-body">
+                    <AddItem />
+                  </div>
+                  <div class="modal-footer" />
+                </Modal>
               </div>
 
               <div className="logout">

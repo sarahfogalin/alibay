@@ -145,4 +145,4 @@ class AddItem extends Component {
   };
 }
 
-export default withRouter(AddItem);
+export default AddItem;

@@ -53,20 +53,22 @@ class UnconnectedLogin extends Component {
 
   render = () => {
     return (
-      <div className="flex">
-        LOGIN:
+      <div className="login">
+        <h2 className="loginTitle">Log in</h2>
         <form onSubmit={this.handleSubmit}>
           <input
+            className="loginForm"
             type="text"
             onChange={this.handleUsernameChange}
             placeholder="USERNAME"
           />
           <input
+            className="loginForm"
             type="text"
             onChange={this.handlePasswordChange}
             placeholder="PASSWORD"
           />
-          <input type="submit" />
+          <input className="submit" type="submit" value="Log me in!" />
         </form>
       </div>
     );
