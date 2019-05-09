@@ -12,6 +12,7 @@
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
   animation-duration: 0.4s;
+  overflow-y: auto;
 }
 
 /* Add Animation */
@@ -42,6 +43,9 @@
   float: right;
   font-size: 28px;
   font-weight: bold;
+  position: absolute;
+  top: 0;
+  right: 13px;
 }
 
 .close:hover,
@@ -50,13 +54,14 @@
   text-decoration: none;
   cursor: pointer;
   top: 0px;
-  right: 0px;
+  right: 13px;
 }
 
 .modal-header {
   padding: 28px 16px;
   background-color: rgb(71, 71, 71);
   color: white;
+  position: relative;
 }
 
 .modal-footer {
@@ -69,6 +74,7 @@
   padding-left: 0px;
   padding-right: 0px;
   padding-top: 30px;
+  overflow-y: auto;
 }
 
 /* -------------- Log in & Sign up ---------------*/
@@ -92,7 +98,7 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin-bottom: 30px;
+  margin-bottom: 38px;
   transition-duration: 0.4s;
   cursor: pointer;
 }
@@ -118,8 +124,8 @@
   margin: 8% auto; /* 15% from the top and centered */
   padding: 0px;
   border: 1px solid #888;
-  width: 45%; /* Could be more or less, depending on screen size */
-  height: 70%;
+  width: 30%; /* Could be more or less, depending on screen size */
+  height: 73%;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-animation-name: animatetop;
@@ -137,9 +143,60 @@
 .itemForm {
   display: flex;
   text-align: center;
-  margin: auto;
-  margin-top: 10px;
-  margin-bottom: 30px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
   padding-left: 40px;
   padding-right: 40px;
+}
+
+.itemModal-body {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 30px;
+  overflow-y: auto;
+}
+
+.stock {
+  padding: 0;
+  text-align: right;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.modal-menu {
+  margin-top: 10px;
+}
+
+.choose-image {
+  margin-top: 10px;
+}
+
+.itemId {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.itemSubmit {
+  border-radius: 25px;
+  background-color: rgb(71, 71, 71);
+  border: none;
+  color: peachpuff;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.itemSubmit:hover {
+  background-color: peachpuff;
+  color: rgb(71, 71, 71);
 }

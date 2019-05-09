@@ -79,7 +79,8 @@ class AddItem extends Component {
   render = () => {
     console.log("this the option we want ", this.state.itemCategory);
     return (
-      <div className="itemBox">
+      <div className="login">
+        <h2 class="logintitle">Sell an item</h2>
         <form onSubmit={this.handleSubmit}>
           <div>
             <input
@@ -92,55 +93,52 @@ class AddItem extends Component {
           <div>
             <textarea
               rows="3"
+              cols="39"
               onChange={this.handleItemDesc}
               className="big-box"
               placeholder="DESCRIPTION..."
             />
           </div>
-          <div>
+          <div className="choose-image">
+            <input type="file" onChange={this.handleItemImage} />
+          </div>
+          <div className="modal-menu">
             <input
               type="number"
               onChange={this.handleItemPrice}
-              className="itemForm"
-              placeholder="$$$"
+              className="stock"
+              placeholder="PRICE"
             />
-          </div>
-          <div>
-            <input type="file" onChange={this.handleItemImage} />
-          </div>
-          <div>
             <select
               required
               name="dropdown"
               onChange={this.handleCategoryChange}
-              className="itemForm"
+              className="stock"
             >
               <option value="" selected disabled>
-                Choose here
+                CATEGORY
               </option>
               <option value="Clothing">Clothing</option>
               <option value="Footwear">Footwear</option>
               <option value="Accessories">Accessories</option>
             </select>
-          </div>
-          <div>
             <input
               type="number"
               onChange={this.handleItemStock}
-              className="itemForm"
-              placeholder="HOW MANY IN STOCK"
+              className="stock"
+              placeholder="STOCK"
             />
           </div>
           <div>
             <input
               type="text"
               onChange={this.handleItemID}
-              className="itemForm"
-              placeholder="ID (unique to your item"
+              className="itemId"
+              placeholder="ID (unique to your item)"
             />
           </div>
           <div>
-            <input type="submit" className="submit" value="Sell My Item" />
+            <input type="submit" className="itemSubmit" value="Sell My Item" />
           </div>
         </form>
       </div>

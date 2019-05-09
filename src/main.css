@@ -16,12 +16,6 @@ html {
 }
 p,
 a,
-<<<<<<< HEAD
-h1,
-h2,
-h3,
-li {
-=======
 li,
 h1,
 h2,
@@ -29,7 +23,6 @@ h3,
 h4,
 h5,
 h6 {
->>>>>>> 65860a1ff8483f9d2ac5ec96f67d5db290e362fe
   font-size: 20px;
 }
 
