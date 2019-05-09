@@ -34,7 +34,7 @@ class UnconnectedSearch extends Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <input type="text" onChange={this.handleSearch} />
-          <input type="submit" value="Search" />
+          <input type="submit" value="Search" className="button" />
         </form>
       </div>
     );

@@ -94,7 +94,7 @@ class UnconnectedApp extends Component {
         <img src="./catbg2.jpg" className="catpic" />
         <img src="./petlogo.png" className="logo" />
         <div className="flex nav">
-          <h3>Welcome {this.props.username}</h3>
+          <p className="welcome">Welcome {this.props.username}</p>
           {!this.props.loggedIn && (
             <div className="flex">
               <button onClick={this.openSignupModal}>Sign Up</button>
@@ -109,6 +109,9 @@ class UnconnectedApp extends Component {
                 <button className="closeButton" onClick={this.closeLoginModal}>
                   close
                 </button>
+                <button onClick={this.openSignupModal} className="button">
+                  Sign Up
+                </button>
               </Modal>
             </div>
           )}
@@ -116,8 +119,11 @@ class UnconnectedApp extends Component {
           {this.props.loggedIn && (
             <div className="flex">
               <div>
-                <Link to="/additem">Add Item For Sale</Link>
+                <Link to="/additem" className="button">
+                  Add Item For Sale
+                </Link>
               </div>
+
               <div className="logout">
                 <Logout />
               </div>
