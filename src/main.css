@@ -135,10 +135,12 @@ li {
   border-radius: 25px;
 }
 
-.searchbar:focus {
-  width: 100%;
-}
-
 .padded {
   padding: 5px;
+}
+
+.item-box {
+  background-color: peachpuff;
+  width: 300px;
+  padding: 10px;
 }
