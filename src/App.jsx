@@ -1,26 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Signup from "./SignUp.jsx";
-import Login from "./LogIn.jsx";
-import Logout from "./Logout.jsx";
 import Item from "./Item.jsx";
-import Search from "./Search.jsx";
 import SearchResults from "./SearchResults.jsx";
 import ItemDetails from "./ItemDetails.jsx";
-import AddItem from "./AddItem.jsx";
-import { Route, BrowserRouter, Link, withRouter } from "react-router-dom";
-import Modal from "react-modal";
-Modal.setAppElement("#root");
+import Header from "./Header.jsx";
+import { Route, withRouter } from "react-router-dom";
 
 class UnconnectedApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
       itemsArray: [],
-      display: false,
-      loginModalIsOpen: false,
-      signupModalIsOpen: false,
-      itemModalIsOpen: false
+      display: false
     };
   }
   componentDidMount = () => {
@@ -57,40 +48,17 @@ class UnconnectedApp extends Component {
         console.log("fetched all items", body);
       });
   };
-  openLoginModal = () => {
-    this.setState({ loginModalIsOpen: true });
-  };
-  openSignupModal = () => {
-    this.setState({ signupModalIsOpen: true });
-  };
-
-  closeLoginModal = () => {
-    this.setState({ loginModalIsOpen: false });
-  };
-
-  closeSignupModal = () => {
-    this.setState({ signupModalIsOpen: false });
-    console.log(this.state.signupModalIsOpen, "signupmodal");
-  };
-
-  openItemModal = () => {
-    this.setState({ itemModalIsOpen: true });
-  };
-
-  closeItemModal = () => {
-    this.setState({ itemModalIsOpen: false });
-  };
 
   renderHomepage = () => {
     console.log(this.state.itemsArray);
     let displayItems = this.state.itemsArray.map(item => {
       return <Item path={item.image} itemId={item.id} />;
     });
-    let firstFive = displayItems.slice(0, 5);
+    let firstFour = displayItems.slice(0, 4);
 
     let itemsDisplayed = () => {
       if (!this.state.display) {
-        return firstFive;
+        return firstFour;
       }
       return displayItems;
     };
@@ -99,94 +67,13 @@ class UnconnectedApp extends Component {
       this.setState({ display: true });
     };
 
-    let goHome = () => {
-      console.log("****going home...");
-      this.props.history.push("/");
-    };
-
     return (
-      <div>
-        <img src="./catbg2.jpg" className="catpic" />
-        <img src="./petlogo.png" className="logo" onClick={goHome} />
-        <div className="flex nav">
-          <p className="welcome">Welcome {this.props.username}</p>
-          {!this.props.loggedIn && (
-            <div className="stayright flex">
-              <Search />
-              <button onClick={this.openSignupModal} className="button">
-                Sign Up
-              </button>
-              <Modal className="Modal" isOpen={this.state.signupModalIsOpen}>
-                <div class="modal-header">
-                  <span className="close" onClick={this.closeSignupModal}>
-                    &times;
-                  </span>
-                </div>
-                <div class="modal-body">
-                  <Signup />
-                </div>
-                <div class="modal-footer" />
-              </Modal>
-
-              <button className="button" onClick={this.openLoginModal}>
-                Login
-              </button>
-              <Modal className="Modal" isOpen={this.state.loginModalIsOpen}>
-                <div class="modal-header">
-                  <span className="close" onClick={this.closeLoginModal}>
-                    &times;
-                  </span>
-                </div>
-                <div class="modal-body">
-                  <Login />
-                </div>
-                <div class="modal-footer" />
-              </Modal>
-            </div>
-          )}
-
-          {this.props.loggedIn && (
-            <div className="flex">
-              <div>
-                <button className="button" onClick={this.openItemModal}>
-                  Add Item For Sale
-                </button>
-                <Modal
-                  className="itemModal"
-                  isOpen={this.state.itemModalIsOpen}
-                >
-                  <div class="modal-header">
-                    <span className="close" onClick={this.closeItemModal}>
-                      &times;
-                    </span>
-                  </div>
-                  <div class="itemModal-body">
-                    <AddItem fetchItems={this.fetchItems} />
-                  </div>
-                  <div class="modal-footer" />
-                </Modal>
-              </div>
-
-              <div className="logout">
-                <div className="stayright flex">
-                  <Search />
-                  <Logout />
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-        <div className="best-items">
-          <button onClick={setDisplayAll}>Display All</button>
-          <div className="item">{itemsDisplayed()}</div>
-        </div>
+      <div className="best-items">
+        <button onClick={setDisplayAll}>SEE ALL</button>
+        <div>{itemsDisplayed()}</div>
       </div>
     );
   };
-
-  // renderAddItem = () => {
-  //   return <AddItem fetchItems={this.fetchItems} />;
-  // };
 
   renderSearchResults = () => {
     return <SearchResults searchResults={this.props.searchResults} />;
@@ -205,6 +92,7 @@ class UnconnectedApp extends Component {
     console.log("state", this.state);
     return (
       <div id="app">
+        <Header username={this.props.username} loggedIn={this.props.loggedIn} />
         <Route exact={true} path="/" render={this.renderHomepage} />
         <Route exact={true} path="/item/:id" render={this.renderItemDetails} />
         <Route exact={true} path="/additem" render={this.renderAddItem} />
