@@ -33,7 +33,7 @@ class UnconnectedSearch extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" onChange={this.handleSearch} />
+          <input type="text" onChange={this.handleSearch} className="box" />
           <input type="submit" value="Search" className="button" />
         </form>
       </div>

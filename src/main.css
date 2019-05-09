@@ -37,7 +37,7 @@ body {
   background-color: #555555;
 }
 
-.item-details {
+.peach-box {
   border: 5px solid white;
   height: fit-content;
   width: 75%;
@@ -80,19 +80,18 @@ li {
 
 .nav {
   background-color: rgb(212, 211, 211);
-  position: absolute;
+  position: relative;
   width: 100%;
-  top: 300px;
 }
 
-.logout {
+.stayright {
   position: absolute;
   right: 5px;
 }
 
 .catpic {
   width: 100%;
-  position: absolute;
+  position: relative;
 }
 
 .button {
@@ -103,7 +102,7 @@ li {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 20px;
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
@@ -122,4 +121,6 @@ li {
 }
 
 .welcome {
+  font-size: 30px;
+  padding: 12px 24px;
 }

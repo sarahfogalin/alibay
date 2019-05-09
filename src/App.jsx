@@ -97,7 +97,8 @@ class UnconnectedApp extends Component {
         <div className="flex nav">
           <p className="welcome">Welcome {this.props.username}</p>
           {!this.props.loggedIn && (
-            <div className="flex">
+            <div className="stayright flex">
+              <Search />
               <button onClick={this.openSignupModal} className="button">
                 Sign Up
               </button>
@@ -115,22 +116,22 @@ class UnconnectedApp extends Component {
               </Modal>
             </div>
           )}
-          <Search />
+
           {this.props.loggedIn && (
             <div className="flex">
-              <div>
-                <Link to="/additem" className="button">
-                  Add Item For Sale
-                </Link>
-              </div>
-
-              <div className="logout">
+              <div className="stayright flex">
+                <Search />
+                <div>
+                  <Link to="/additem" className="button">
+                    Add Item For Sale
+                  </Link>
+                </div>
                 <Logout />
               </div>
             </div>
           )}
         </div>
-        <div>
+        <div className="best-items">
           <button onClick={setDisplayAll}>Display All</button>
           <div className="item">{itemsDisplayed()}</div>
         </div>
