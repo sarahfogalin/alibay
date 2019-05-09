@@ -98,15 +98,17 @@ class UnconnectedApp extends Component {
           {!this.props.loggedIn && (
             <div className="flex">
               <button onClick={this.openSignupModal}>Sign Up</button>
-              <Modal isOpen={this.state.signupModalIsOpen}>
-                <Signup />
+              <Modal className="Modal" isOpen={this.state.signupModalIsOpen}>
+                <Signup className="Content" />
                 <button onClick={this.closeSignupModal}>close</button>
               </Modal>
 
               <button onClick={this.openLoginModal}>Login</button>
-              <Modal isOpen={this.state.loginModalIsOpen}>
-                <Login />
-                <button onClick={this.closeLoginModal}>close</button>
+              <Modal className="Modal" isOpen={this.state.loginModalIsOpen}>
+                <Login className="Content" />
+                <button className="closeButton" onClick={this.closeLoginModal}>
+                  close
+                </button>
               </Modal>
             </div>
           )}
