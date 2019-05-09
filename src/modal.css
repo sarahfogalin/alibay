@@ -68,7 +68,6 @@
 .modal-body {
   padding-left: 0px;
   padding-right: 0px;
-  padding-bottom: 31px;
   padding-top: 30px;
 }
 
@@ -93,10 +92,9 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin-bottom: 30px;
   transition-duration: 0.4s;
   cursor: pointer;
-  margin-bottom: 10px;
 }
 
 .submit:hover {
@@ -108,7 +106,7 @@
   display: flex;
   text-align: center;
   margin: auto;
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 30px;
   padding-left: 40px;
   padding-right: 40px;

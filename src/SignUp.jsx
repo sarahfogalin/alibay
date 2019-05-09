@@ -68,7 +68,7 @@ class UnconnectedSignUp extends Component {
   render = () => {
     return (
       <div className="login">
-        <h2 className="loginTitle">Sign up</h2>
+        <h2 className="loginTitle">Sign Up</h2>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
