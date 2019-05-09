@@ -117,5 +117,41 @@
 /* ------------------- Add Item ------------------*/
 
 .itemModal {
+  margin: 8% auto; /* 15% from the top and centered */
+  padding: 0px;
+  border: 1px solid #888;
+  width: 45%; /* Could be more or less, depending on screen size */
+  height: 70%;
   background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+.sellTitle {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+/* .peach-box {
+  border: 5px solid white;
+  height: fit-content;
+  background-color: white;
+  display: flex;
+  text-align: center;
+  margin-left: 30px;
+  margin-right: 30px;
+} */
+
+.itemForm {
+  display: flex;
+  text-align: center;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  padding-left: 40px;
+  padding-right: 40px;
 }

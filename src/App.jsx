@@ -70,6 +70,7 @@ class UnconnectedApp extends Component {
 
   closeSignupModal = () => {
     this.setState({ signupModalIsOpen: false });
+    console.log(this.state.signupModalIsOpen, "signupmodal");
   };
 
   openItemModal = () => {
@@ -160,7 +161,7 @@ class UnconnectedApp extends Component {
                     </span>
                   </div>
                   <div class="itemModal-body">
-                    <AddItem />
+                    <AddItem fetchItems={this.fetchItems} />
                   </div>
                   <div class="modal-footer" />
                 </Modal>
@@ -183,9 +184,9 @@ class UnconnectedApp extends Component {
     );
   };
 
-  renderAddItem = () => {
-    return <AddItem fetchItems={this.fetchItems} />;
-  };
+  // renderAddItem = () => {
+  //   return <AddItem fetchItems={this.fetchItems} />;
+  // };
 
   renderSearchResults = () => {
     return <SearchResults searchResults={this.props.searchResults} />;

@@ -36,15 +36,6 @@ body {
   background-color: #555555;
 }
 
-.peach-box {
-  border: 5px solid white;
-  height: fit-content;
-  width: 75%;
-  background-color: #ffdab9;
-  padding: 10px;
-  display: flex;
-}
-
 .details-pic {
   height: 200px;
 }
@@ -57,7 +48,7 @@ li {
   padding: 10px;
 }
 
-.box {
+.searchBox {
   height: 20px;
   width: 300px;
   font-size: 20px;
@@ -65,13 +56,13 @@ li {
   margin: 5px;
 }
 
-.big-box {
+/*.big-box {
   height: 120px;
   width: 300px;
   font-size: 20px;
   padding: 20px;
   margin: 5px;
-}
+} */
 
 .flex {
   display: flex;

@@ -36,7 +36,7 @@ class UnconnectedSearch extends Component {
           <input
             type="text"
             onChange={this.handleSearch}
-            className="box searchbar"
+            className="searchBox searchbar"
           />
           {/* <input type="submit" value="Search" className="button" /> */}
         </form>

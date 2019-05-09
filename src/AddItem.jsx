@@ -79,13 +79,13 @@ class AddItem extends Component {
   render = () => {
     console.log("this the option we want ", this.state.itemCategory);
     return (
-      <div className="peach-box">
+      <div className="itemBox">
         <form onSubmit={this.handleSubmit}>
           <div>
             <input
               type="text"
               onChange={this.handleItemName}
-              className="box"
+              className="itemForm"
               placeholder="ITEM NAME"
             />
           </div>
@@ -101,7 +101,7 @@ class AddItem extends Component {
             <input
               type="number"
               onChange={this.handleItemPrice}
-              className="box"
+              className="itemForm"
               placeholder="$$$"
             />
           </div>
@@ -113,7 +113,7 @@ class AddItem extends Component {
               required
               name="dropdown"
               onChange={this.handleCategoryChange}
-              className="box"
+              className="itemForm"
             >
               <option value="" selected disabled>
                 Choose here
@@ -127,7 +127,7 @@ class AddItem extends Component {
             <input
               type="number"
               onChange={this.handleItemStock}
-              className="box"
+              className="itemForm"
               placeholder="HOW MANY IN STOCK"
             />
           </div>
@@ -135,12 +135,12 @@ class AddItem extends Component {
             <input
               type="text"
               onChange={this.handleItemID}
-              className="box"
-              placeholder="CHOOSE AN ID"
+              className="itemForm"
+              placeholder="ID (unique to your item"
             />
           </div>
           <div>
-            <input type="submit" className="button" />
+            <input type="submit" className="submit" value="Sell My Item" />
           </div>
         </form>
       </div>
