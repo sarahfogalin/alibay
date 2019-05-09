@@ -44,11 +44,13 @@ section {
 /* HEADER */
 
 body {
-  background-color: #555555;
+  background-color: #616161;
+  padding-bottom: 5px;
 }
 
 .details-pic {
   height: 200px;
+  border: 5px solid white;
 }
 
 li {
@@ -65,6 +67,7 @@ li {
   font-size: 20px;
   padding: 20px;
   margin: 5px;
+  border: none;
 }
 
 /*.big-box {
@@ -83,6 +86,8 @@ li {
   background-color: rgb(212, 211, 211);
   position: relative;
   width: 100%;
+  margin-bottom: 5px;
+  padding: 4px;
 }
 
 .stayright {
@@ -105,7 +110,7 @@ li {
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
-  margin: 4px 2px;
+  margin: 4px;
   transition-duration: 0.4s;
   cursor: pointer;
 }
@@ -113,6 +118,25 @@ li {
 .button:hover {
   background-color: peachpuff;
   color: rgb(71, 71, 71);
+}
+
+.see-more-button {
+  background-color: peachpuff;
+  border: none;
+  color: rgb(71, 71, 71);
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.see-more-button:hover {
+  background-color: rgb(71, 71, 71);
+  color: peachpuff;
 }
 
 .logo {
@@ -179,4 +203,23 @@ li {
 .item-link:hover {
   color: grey;
   letter-spacing: 0.1px;
+}
+
+.justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+.item-details {
+  height: fit-content;
+  width: 75%;
+  background-color: peachpuff;
+  padding: 10px;
+  display: flex;
+  margin: 5px;
+}
+
+.item-name {
+  text-transform: uppercase;
+  font-size: 25px;
 }
