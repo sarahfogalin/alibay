@@ -70,14 +70,18 @@ class UnconnectedApp extends Component {
       return displayItems;
     };
 
-    let setDisplayAll = () => {
-      this.setState({ display: true });
+    let displayToggle = () => {
+      this.setState({ display: !this.state.display });
     };
 
     return (
-      <div className="best-items">
-        <button onClick={setDisplayAll}>SEE ALL</button>
+      <div>
         <div className="items-displayed">{itemsDisplayed()}</div>
+        <div className="justify-center">
+          <button onClick={displayToggle} className="see-more-button">
+            {this.state.display ? "SEE LESS" : "SEE MORE"}
+          </button>
+        </div>
       </div>
     );
   };

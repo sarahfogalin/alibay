@@ -14,7 +14,7 @@ let reducer = (state, action) => {
     return { ...state, username: action.username };
   }
   if (action.type === "logout") {
-    return { ...state, loggedIn: false, username: "anonymous" };
+    return { ...state, loggedIn: false, username: "" };
   }
   if (action.type === "search-results") {
     return { ...state, results: action.results };
@@ -38,7 +38,7 @@ const store = createStore(
   reducer,
   {
     loggedIn: false,
-    username: "anonymous",
+    username: "",
     results: [],
     loginModalIsOpen: false,
     signupModalIsOpen: false,
