@@ -16,7 +16,13 @@ html {
 }
 p,
 a,
-li {
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-size: 20px;
 }
 
@@ -155,6 +161,7 @@ li {
   width: 100%;
   max-height: 250px;
   overflow: hidden;
+  border: 5px solid white;
 }
 
 .image {
@@ -163,4 +170,13 @@ li {
 
 .item-link {
   margin-top: auto;
+  text-decoration: none;
+  text-align: center;
+  color: rgb(71, 71, 71);
+  font-size: 25px;
+}
+
+.item-link:hover {
+  color: grey;
+  letter-spacing: 0.1px;
 }
