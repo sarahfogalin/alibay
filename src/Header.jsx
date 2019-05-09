@@ -19,18 +19,18 @@ class UnconnectedHeader extends Component {
     };
   }
   openLoginModal = () => {
-    this.setState({ loginModalIsOpen: true });
+    this.props.dispatch({ type: "triggerOpenLoginModal", payload: true });
   };
   openSignupModal = () => {
-    this.setState({ signupModalIsOpen: true });
+    this.props.dispatch({ type: "triggerOpenSignupModal", payload: true });
   };
 
   closeLoginModal = () => {
-    this.setState({ loginModalIsOpen: false });
+    this.props.dispatch({ type: "triggerCloseLoginModal", payload: false });
   };
 
   closeSignupModal = () => {
-    this.setState({ signupModalIsOpen: false });
+    this.props.dispatch({ type: "triggerCloseSignupModal", payload: false });
   };
 
   openItemModal = () => {
@@ -59,7 +59,7 @@ class UnconnectedHeader extends Component {
               <button onClick={this.openSignupModal} className="button">
                 Sign Up
               </button>
-              <Modal className="Modal" isOpen={this.state.signupModalIsOpen}>
+              <Modal className="Modal" isOpen={this.props.signupModalIsOpen}>
                 <div class="modal-header">
                   <span className="close" onClick={this.closeSignupModal}>
                     &times;
@@ -74,7 +74,7 @@ class UnconnectedHeader extends Component {
               <button className="button" onClick={this.openLoginModal}>
                 Login
               </button>
-              <Modal className="Modal" isOpen={this.state.loginModalIsOpen}>
+              <Modal className="Modal" isOpen={this.props.loginModalIsOpen}>
                 <div class="modal-header">
                   <span className="close" onClick={this.closeLoginModal}>
                     &times;
@@ -123,6 +123,13 @@ class UnconnectedHeader extends Component {
     );
   };
 }
+let mapStateToProps = state => {
+  return {
+    loggedIn: state.loggedIn,
+    loginModalIsOpen: state.loginModalIsOpen,
+    signupModalIsOpen: state.signupModalIsOpen
+  };
+};
 
-let Header = connect()(UnconnectedHeader);
+let Header = connect(mapStateToProps)(UnconnectedHeader);
 export default withRouter(Header);

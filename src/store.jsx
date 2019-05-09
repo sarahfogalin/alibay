@@ -19,12 +19,31 @@ let reducer = (state, action) => {
   if (action.type === "search-results") {
     return { ...state, results: action.results };
   }
+  if (action.type === "triggerOpenLoginModal") {
+    return { ...state, loginModalIsOpen: action.payload };
+  }
+  if (action.type === "triggerOpenSignupModal") {
+    return { ...state, signupModalIsOpen: action.payload };
+  }
+  if (action.type === "triggerCloseLoginModal") {
+    return { ...state, loginModalIsOpen: action.payload };
+  }
+  if (action.type === "triggerCloseSignupModal") {
+    return { ...state, signupModalIsOpen: action.payload };
+  }
   return state;
 };
 
 const store = createStore(
   reducer,
-  { loggedIn: false, username: "anonymous", results: [] },
+  {
+    loggedIn: false,
+    username: "anonymous",
+    results: [],
+    loginModalIsOpen: false,
+    signupModalIsOpen: false,
+    itemModalIsOpen: false
+  },
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 export default store;

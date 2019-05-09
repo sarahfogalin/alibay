@@ -57,6 +57,10 @@ class UnconnectedSignUp extends Component {
               type: "set-username",
               username: this.state.username
             });
+            this.props.dispatch({
+              type: "triggerOpenSignupModal",
+              payload: false
+            });
           });
       });
   };
@@ -85,6 +89,9 @@ class UnconnectedSignUp extends Component {
   };
 }
 
-let Signup = connect()(UnconnectedSignUp);
+let mapStateToProps = state => {
+  return { signupModalIsOpen: state.signupModalIsOpen };
+};
+let Signup = connect(mapStateToProps)(UnconnectedSignUp);
 
 export default Signup;

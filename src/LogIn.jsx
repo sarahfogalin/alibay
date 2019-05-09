@@ -7,8 +7,7 @@ class UnconnectedLogin extends Component {
     super(props);
     this.state = {
       username: "bob",
-      password: "",
-      modalIsOpen: false
+      password: ""
     };
   }
 
@@ -48,6 +47,7 @@ class UnconnectedLogin extends Component {
           type: "set-username",
           username: this.state.username
         });
+        this.props.dispatch({ type: "triggerOpenLoginModal", payload: false });
       });
   };
 
@@ -76,7 +76,7 @@ class UnconnectedLogin extends Component {
 }
 
 let mapStateToProps = state => {
-  return { username: state.username };
+  return { username: state.username, loginModalIsOpen: state.loginModalIsOpen };
 };
 
 let Login = connect(mapStateToProps)(UnconnectedLogin);
