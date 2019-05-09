@@ -80,6 +80,9 @@ li {
 
 .nav {
   background-color: rgb(212, 211, 211);
+  position: absolute;
+  width: 100%;
+  top: 300px;
 }
 
 .logout {
@@ -89,6 +92,7 @@ li {
 
 .catpic {
   width: 100%;
+  position: absolute;
 }
 
 button {
@@ -107,4 +111,11 @@ button {
 button:hover {
   background-color: #cae2cb;
   color: rgb(185, 17, 17);
+}
+
+.logo {
+  position: absolute;
+  height: 100px;
+  right: 10px;
+  top: 10px;
 }
