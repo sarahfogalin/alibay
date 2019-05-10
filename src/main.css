@@ -45,7 +45,7 @@ section {
 
 body {
   background-color: #616161;
-  padding-bottom: 5px;
+  padding-bottom: 15px;
 }
 
 .details-pic {
@@ -86,7 +86,7 @@ li {
   background-color: rgb(212, 211, 211);
   position: relative;
   width: 100%;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   padding: 4px;
 }
 
@@ -186,10 +186,12 @@ li {
   max-height: 250px;
   overflow: hidden;
   border: 5px solid white;
+  font-size: 0;
 }
 
 .image {
   width: 100%;
+  transition: all ease 300ms;
 }
 
 .item-link {
@@ -197,12 +199,14 @@ li {
   text-decoration: none;
   text-align: center;
   color: rgb(71, 71, 71);
-  font-size: 25px;
 }
 
 .item-link:hover {
   color: grey;
   letter-spacing: 0.1px;
+}
+.item-link:hover .image-container {
+  border-color: rgb(212, 211, 211);
 }
 
 .justify-center {
@@ -229,4 +233,5 @@ li {
 .StripeCheckout {
   margin-top: 20px;
   align-content: center;
+  margin-top: auto;
 }

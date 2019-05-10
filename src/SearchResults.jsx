@@ -6,13 +6,15 @@ class UnconnectedSearchResults extends Component {
   render = () => {
     let searchResults = this.props.searchResults;
     return (
-      <div className="item">
-        console.log("searchResults")
+      <div className="items-displayed">
         {searchResults.map(result => {
           return (
-            <div>
-              <Item path={result.image} itemId={result.id} />
-            </div>
+            <Item
+              path={result.image}
+              itemId={result.id}
+              name={result.name}
+              price={result.price}
+            />
           );
         })}
       </div>
