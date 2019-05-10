@@ -217,9 +217,16 @@ li {
   padding: 10px;
   display: flex;
   margin: 5px;
+  margin-bottom: 20px;
 }
 
 .item-name {
   text-transform: uppercase;
   font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.StripeCheckout {
+  margin-top: 20px;
+  align-content: center;
 }
