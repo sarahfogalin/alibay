@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import Modal from "react-modal";
 
-class AddItem extends Component {
+class UnconnectedAddItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -47,7 +49,11 @@ class AddItem extends Component {
     this.setState({ itemID: event.target.value });
   };
   handleSubmit = event => {
-    console.log("in handle submit");
+    this.props.dispatch({
+      type: "triggerCloseItemModal",
+      payload: false
+    });
+    console.log("in handle submit", "state.triggerCloseItemModal");
     event.preventDefault();
     let data = new FormData();
     data.append("name", this.state.itemName);
@@ -145,5 +151,8 @@ class AddItem extends Component {
     );
   };
 }
-
+let mapStateToProps = state => {
+  return { itemModalIsOpen: state.itemModalIsOpen };
+};
+let AddItem = connect(mapStateToProps)(UnconnectedAddItem);
 export default AddItem;

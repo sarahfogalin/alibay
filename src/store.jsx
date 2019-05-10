@@ -31,6 +31,12 @@ let reducer = (state, action) => {
   if (action.type === "triggerCloseSignupModal") {
     return { ...state, signupModalIsOpen: action.payload };
   }
+  if (action.type === "triggerOpenItemModal") {
+    return { ...state, itemModalIsOpen: action.payload };
+  }
+  if (action.type === "triggerCloseItemModal") {
+    return { ...state, itemModalIsOpen: action.payload };
+  }
   return state;
 };
 

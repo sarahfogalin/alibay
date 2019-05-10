@@ -58,7 +58,7 @@ class UnconnectedSignUp extends Component {
               username: this.state.username
             });
             this.props.dispatch({
-              type: "triggerOpenSignupModal",
+              type: "triggerCloseSignupModal",
               payload: false
             });
           });

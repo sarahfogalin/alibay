@@ -34,11 +34,11 @@ class UnconnectedHeader extends Component {
   };
 
   openItemModal = () => {
-    this.setState({ itemModalIsOpen: true });
+    this.props.dispatch({ type: "triggerOpenItemModal", payload: true });
   };
 
   closeItemModal = () => {
-    this.setState({ itemModalIsOpen: false });
+    this.props.dispatch({ type: "triggerCloseItemModal", payload: false });
   };
 
   goHome = () => {
@@ -96,7 +96,7 @@ class UnconnectedHeader extends Component {
                 </button>
                 <Modal
                   className="itemModal"
-                  isOpen={this.state.itemModalIsOpen}
+                  isOpen={this.props.itemModalIsOpen}
                 >
                   <div class="modal-header">
                     <span className="close" onClick={this.closeItemModal}>
@@ -127,7 +127,8 @@ let mapStateToProps = state => {
   return {
     loggedIn: state.loggedIn,
     loginModalIsOpen: state.loginModalIsOpen,
-    signupModalIsOpen: state.signupModalIsOpen
+    signupModalIsOpen: state.signupModalIsOpen,
+    itemModalIsOpen: state.itemModalIsOpen
   };
 };
 
