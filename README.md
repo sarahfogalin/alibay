@@ -5,3 +5,9 @@
 ## Alibay
 
 A marketplace style website where users can buy and sell items to/from other members.
+
+##Features
+
+- A marketplace style website built with Javascript, React, Redux and HTML5/CSS.
+- Buy and sell items to/from other members.
+- Search capability for items added by members with all their related information.
