@@ -6,7 +6,7 @@
 
 A marketplace style website where users can buy and sell items to/from other members.
 
-##Features
+# Features
 
 - A marketplace style website built with Javascript, React, Redux and HTML5/CSS.
 - Buy and sell items to/from other members.
