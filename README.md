@@ -2,11 +2,11 @@
    <img width="1000" src="https://github.com/sarahfogalin/alibay/blob/master/images/alibay-banner.png" 
 </p>
 
-## Alibay
+# Alibay
 
 A marketplace style website where users can buy and sell items to/from other members.
 
-# Features
+## Features
 
 - A marketplace style website built with Javascript, React, Redux and HTML5/CSS.
 - Buy and sell items to/from other members.
